@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piedra, Papel o Tijera</title>
+  </head>
+  <body>
+    <div class="master">
+      <div class="container">
+        <div>
+          <div class="jugadoresText">
+            <h3 style="padding-right: 15px;">Maquina:</h3>
+            <h3 style="padding-left: 15px;">Jugador:</h3>
+          </div>
+          <div class="containerImg">
+            <img id="imagenMaquina" src="./images/number1.webp" alt="" class="imgMa">
+            <h2 style="font-size: 50px;">VS</h2>
+            <img id="imagenJugador" src="./images/number2.webp" alt="" class="imgJu">
+          </div>
+        </div>
+        <div>
+          <h1 id="Resultado"></h1>
+        </div>
+        <div>
+            <button onclick="juego(1)">Piedra</button>
+            <button onclick="juego(2)">Papel</button>
+            <button onclick="juego(3)">Tijeras</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .jugadoresText{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+
+      .containerImg{
+        align-items: center; 
+        display: flex;
+        justify-content: center;
+        flex: 1;
+      }
+
+      .imgMa{
+        padding-right: 15px;
+        width: 100px;
+        height: 100px;
+      }
+      .imgJu{
+        padding-left: 15px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .master{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        padding: 2.5rem;
+        flex-direction: column;
+      }
+
+      .container > div > button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
+      }
+      .container > div:nth-child(1) {
+        text-align: center;
+      }
+
+    </style>
+
+    <script>
+      let imagenMaquina = document.getElementById("imagenMaquina")
+      let imagenJugador = document.getElementById("imagenJugador")
+      let tiroMaquina = "";
+      let resultado;
+      let piedra = document.getElementById("Piedra");
+      let papel = document.getElementById("Papel");
+      let tijeras = document.getElementById("Tijeras");
+
+      function juego(tiroJugador) {
+        let maquina = Math.trunc(Math.random() * 3 + 1);
+        if (tiroJugador == 1) {
+          imagenJugador.src = "./images/piedra.webp";
+          if (tiroJugador == maquina) {
+            imagenMaquina.src="./images/piedra.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Empate";
+          }
+          if (maquina == 2) {
+            imagenMaquina.src="./images/papel.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Perdiste la maquina tiro papel";
+          }
+          if (maquina == 3) {
+            imagenMaquina.src="./images/tijeras.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Ganaste la maquina tiro tijeras";
+          }
+        }
+        if (tiroJugador == 2) {
+          imagenJugador.src = "./images/papel.webp";
+          if (tiroJugador == maquina) {
+            imagenMaquina.src="./images/papel.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Empate";
+          }
+          if (maquina == 3) {
+            imagenMaquina.src="./images/tijeras.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Perdiste la maquina tiro tijeras";
+          }
+          if (maquina == 1) {
+            imagenMaquina.src="./images/piedra.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Ganaste la maquina tiro piedra";
+          }
+        }
+        if (tiroJugador == 3) {
+          imagenJugador.src = "./images/tijeras.webp";
+          if (tiroJugador == maquina) {
+            imagenMaquina.src="./images/tijeras.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Empate";
+          }
+          if (maquina == 1) {
+            imagenMaquina.src="./images/piedra.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Perdiste la maquina tiro piedra";
+          }
+          if (maquina == 2) {
+            imagenMaquina.src="./images/papel.webp";
+            resultado = document.getElementById("Resultado").innerHTML =
+              "Ganaste la maquina tiro papel";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
